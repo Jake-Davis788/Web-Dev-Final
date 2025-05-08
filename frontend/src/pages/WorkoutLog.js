@@ -39,7 +39,7 @@ function WorkoutLog() {
       .catch((err) => console.error('Error creating workout:', err));
   };
 
-  
+
   return (
     <div>
       <h2>Your Workout Log</h2>
@@ -96,7 +96,7 @@ function WorkoutLog() {
 
 
       {workouts.length === 0 ? (
-        <p></p>
+        <p>Your collection:</p>
       ) : (
         <ul className="list-group">
           {workouts.map((workout) => (

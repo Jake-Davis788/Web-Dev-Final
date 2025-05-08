@@ -30,16 +30,8 @@ function Profile() {
       <hr />
       <h3>Workout Stats</h3>
       <p><strong>Total Workouts:</strong> {stats.total}</p>
-      <p><strong>Total Duration:</strong> {stats.duration} minutes</p>
 
-      <h3 className="mt-4">Recent Workouts</h3>
-      <ul className="list-group">
-        {workouts.map((w) => (
-          <li key={w._id} className="list-group-item">
-            <strong>{w.name}</strong> – {w.duration} mins on {new Date(w.date).toLocaleDateString()}
-          </li>
-        ))}
-      </ul>
+      <h3 className="mt-4">Favorite Workouts</h3>
     </div>
   );
 }
