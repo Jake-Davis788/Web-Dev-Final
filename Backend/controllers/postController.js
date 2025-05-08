@@ -1,10 +1,8 @@
-// Correct relative path to the Post model
 const Post = require('../models/Post');
 
-// Create a new post
+// new post
 exports.createPost = async (req, res) => {
   try {
-    // Create a new post and associate it with the logged-in user
     const post = new Post({ ...req.body, userId: req.user.id });
     await post.save();
     res.json(post);
@@ -13,7 +11,7 @@ exports.createPost = async (req, res) => {
   }
 };
 
-// Get all posts
+// all posts
 exports.getPosts = async (req, res) => {
   try {
     // Fetch posts and populate the userId field with the username
@@ -24,7 +22,7 @@ exports.getPosts = async (req, res) => {
   }
 };
 
-// Delete a post by ID
+// delete post
 exports.deletePost = async (req, res) => {
   try {
     await Post.findByIdAndDelete(req.params.id);

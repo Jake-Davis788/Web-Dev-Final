@@ -2,23 +2,31 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const connectDB = require('./config/db');  // Database connection function
+const connectDB = require('./config/db');
 
-// Load environment variables
+
 dotenv.config();
-
-// Connect to the database
 connectDB();
 
 const app = express();
 app.use(cors());
-app.use(express.json());  // Middleware to parse JSON bodies
+app.use(express.json());
 
-// Define the routes
-app.use('/api/auth', require('./routes/auth'));  // Auth routes
-app.use('/api/workouts', require('./routes/workouts'));  // Workouts routes
-app.use('/api/posts', require('./routes/posts'));  // Posts routes
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/workouts', require('./routes/workouts'));
+app.use('/api/posts', require('./routes/posts'));
 
-// Start the server
+app.post('/api/workouts', async (req, res) => {
+    try {
+      const { name, type, duration, intensity, notes } = req.body;
+      const newWorkout = new Workout({ name, type, duration, intensity, notes, date: new Date() });
+      await newWorkout.save();
+      res.status(201).json(newWorkout);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Error saving workout' });
+    }
+  });
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

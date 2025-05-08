@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/authMiddleware'); // Authentication middleware
+const auth = require('../middleware/authMiddleware');
 const {
   createPost,
   getPosts,
   deletePost,
-} = require('../controllers/postController'); // Import controller functions
+} = require('../controllers/postController');
 
 // Routes for posts
-router.post('/', auth, createPost);  // Create a post
-router.get('/', getPosts);           // Get all posts
-router.delete('/:id', auth, deletePost);  // Delete a post by ID
+router.post('/', auth, createPost);
+router.get('/', getPosts);
+router.delete('/:id', auth, deletePost);
 
-module.exports = router;  // Export the router
+module.exports = router; 
