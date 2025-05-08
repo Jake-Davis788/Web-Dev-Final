@@ -1,0 +1,17 @@
+{
+  "name": "fitnessconnect-db",
+  "version": "1.0.0",
+  "description": "Database portion for FitnessConnect MERN project",
+  "main": "index.js",
+  "scripts": {
+    "seed": "node seeds/seed.js"
+  },
+  "keywords": [],
+  "author": "Farouk Hamdan",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.1",
+    "mongoose": "^8.3.2"
+  }
+}
